@@ -3,6 +3,7 @@ package com.ml.springwithgraphql.controllers;
 import com.ml.springwithgraphql.data.Customer;
 import com.ml.springwithgraphql.data.CustomerRepository;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
@@ -34,5 +35,10 @@ public class CustomerController {
     @QueryMapping
     public Customer customerByEmail(@Argument String email) {
         return this.customerRepository.findCustomerByEmail(email);
+    }
+
+    @MutationMapping
+    public Customer addCustomer(@Argument(name = "input") CustomerInput customerInput) {
+        return this.customerRepository.save(customerInput.getCustomerEntity());
     }
 }
