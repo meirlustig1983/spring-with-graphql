@@ -1,6 +1,6 @@
 package com.ml.springwithgraphql.controllers;
 
-import com.ml.springwithgraphql.data.Customer;
+import com.ml.springwithgraphql.data.dto.Customer;
 import lombok.Data;
 
 @Data
